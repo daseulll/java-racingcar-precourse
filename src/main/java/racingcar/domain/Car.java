@@ -1,12 +1,9 @@
 package racingcar.domain;
 
-import net.bytebuddy.asm.Advice;
 import racingcar.vo.Location;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class Car {
@@ -34,9 +31,16 @@ public class Car {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
+            validateCarName(carName);
             cars.add(new Car(carName, new Location(0)));
         }
         return cars;
+    }
+
+    private static void validateCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
+        }
     }
 
 }
