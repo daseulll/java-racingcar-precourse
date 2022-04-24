@@ -11,9 +11,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         String[] carNames = InputView.scanCarNames();
-
         List<Car> cars = Car.createBatch(carNames);
         RacingCarGame racingCarGame = new RacingCarGame(cars, new RandomNumCondition(new RandomGenerator(0, 9)));
-        racingCarGame.play();
+
+        Integer numOfRound = InputView.scanNumOfRound();
+        for (int i = 0; i < numOfRound; i++) {
+            racingCarGame.play();
+        }
     }
 }
