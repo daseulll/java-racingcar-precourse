@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.RandomNumCondition;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Application {
         Integer numOfRound = InputView.scanNumOfRound();
         for (int i = 0; i < numOfRound; i++) {
             racingCarGame.play();
+            ResultView.showResult(racingCarGame);
         }
     }
 }

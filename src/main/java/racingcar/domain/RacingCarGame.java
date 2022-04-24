@@ -11,6 +11,10 @@ public class RacingCarGame {
         this.condition = condition;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void play() {
         proceedCars();
     }
