@@ -14,7 +14,7 @@ public class Application {
         List<Car> cars = createCars();
         RacingCarGame racingCarGame = new RacingCarGame(cars, new RandomNumCondition(new RandomGenerator(0, 9)));
 
-        Integer numOfRound = InputView.scanNumOfRound();
+        Integer numOfRound = scanNumOfRound();
         for (int i = 0; i < numOfRound; i++) {
             racingCarGame.play();
             ResultView.showResult(racingCarGame);
@@ -29,6 +29,15 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return createCars();
+        }
+    }
+
+    private static Integer scanNumOfRound() {
+        try {
+            return InputView.scanNumOfRound();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return scanNumOfRound();
         }
     }
 }

@@ -18,6 +18,10 @@ public class InputView {
         System.out.println(INPUT_NUM_OF_ROUND);
         String numOfRound = Console.readLine();
 
-        return Integer.parseInt(numOfRound);
+        try {
+            return Integer.parseInt(numOfRound);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
     }
 }
