@@ -11,12 +11,16 @@ public class InputView {
         System.out.println(INPUT_CAR_NAMES);
         String carNames = Console.readLine();
 
-        return carNames.split(",");
+        String[] carNameList = carNames.split(",");
+        for (int i = 0; i < carNameList.length; i++) {
+            carNameList[i] = carNameList[i].trim();
+        }
+        return carNameList;
     }
 
     public static Integer scanNumOfRound() {
         System.out.println(INPUT_NUM_OF_ROUND);
-        String numOfRound = Console.readLine();
+        String numOfRound = Console.readLine().trim();
 
         try {
             return Integer.parseInt(numOfRound);
