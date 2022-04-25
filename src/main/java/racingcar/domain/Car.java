@@ -27,6 +27,10 @@ public class Car {
         location.move(1);
     }
 
+    public boolean isWinningLocation(int winningLocation) {
+        return location.getLocation() == winningLocation;
+    }
+
     public static List<Car> createBatch(String[] carNames) {
         List<Car> cars = new ArrayList<>();
 

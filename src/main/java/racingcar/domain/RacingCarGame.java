@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
@@ -17,6 +18,28 @@ public class RacingCarGame {
 
     public void play() {
         proceedCars();
+    }
+
+    public static List<Car> findWinners(List<Car> cars) {
+        int winningLocation = getWinningLocation(cars);
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isWinningLocation(winningLocation)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private static int getWinningLocation(List<Car> cars) {
+        int winningLocation = 0;
+        for (Car car : cars) {
+            if (car.getLocation() > winningLocation) {
+                winningLocation = car.getLocation();
+            }
+        }
+        return winningLocation;
     }
 
     private void proceedCars() {

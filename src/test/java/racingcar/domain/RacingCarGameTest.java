@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class RacingCarGameTest {
 
@@ -23,9 +25,9 @@ class RacingCarGameTest {
 
         racingCarGame.play();
 
-        Assertions.assertThat(cars.get(0).getLocation()).isEqualTo(1);
-        Assertions.assertThat(cars.get(1).getLocation()).isEqualTo(1);
-        Assertions.assertThat(cars.get(2).getLocation()).isEqualTo(1);
+        assertThat(cars.get(0).getLocation()).isEqualTo(1);
+        assertThat(cars.get(1).getLocation()).isEqualTo(1);
+        assertThat(cars.get(2).getLocation()).isEqualTo(1);
     }
 
     @Test
@@ -39,9 +41,22 @@ class RacingCarGameTest {
 
         racingCarGame.play();
 
-        Assertions.assertThat(cars.get(0).getLocation()).isEqualTo(0);
-        Assertions.assertThat(cars.get(1).getLocation()).isEqualTo(0);
-        Assertions.assertThat(cars.get(2).getLocation()).isEqualTo(0);
+        assertThat(cars.get(0).getLocation()).isEqualTo(0);
+        assertThat(cars.get(1).getLocation()).isEqualTo(0);
+        assertThat(cars.get(2).getLocation()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("우승자 찾기")
+    void findWinners() {
+        List<Car> cars = new ArrayList<>(Arrays.asList(
+                new Car("pobi", new Location(1)),
+                new Car("woni", new Location(3)),
+                new Car("jun", new Location(3))));
+
+        List<Car> winners = RacingCarGame.findWinners(cars);
+        assertThat(winners).contains(cars.get(1));
+        assertThat(winners).contains(cars.get(2));
     }
 
     static class SatisfiedCondition implements Condition {
