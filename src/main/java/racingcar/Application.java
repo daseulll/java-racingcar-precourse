@@ -1,9 +1,7 @@
 package racingcar;
 
 import racingcar.common.RandomGenerator;
-import racingcar.domain.Car;
-import racingcar.domain.RacingCarGame;
-import racingcar.domain.RandomNumCondition;
+import racingcar.domain.*;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -23,8 +21,8 @@ public class Application {
     }
 
     private static List<Car> createCars() {
-        String[] carNames = InputView.scanCarNames();
         try {
+            CarNames carNames = InputView.scanCarNames();
             return Car.createBatch(carNames);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

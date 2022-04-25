@@ -14,7 +14,7 @@ class CarTest {
     @Test
     @DisplayName("입력한 자동차 이름 개수만큼 Car 객체 생성되는지 확인")
     void createBatch() {
-        List<Car> cars = Car.createBatch(new String[]{"pobi", "woni", "jun"});
+        List<Car> cars = Car.createBatch(new CarNames(new String[]{"pobi", "woni", "jun"}));
 
         assertThat(cars).hasSize(3);
     }
@@ -22,19 +22,11 @@ class CarTest {
     @Test
     @DisplayName("입력한 자동차 이름대로 Car 객체 생성되는지 확인")
     void createBatchCarName() {
-        List<Car> cars = Car.createBatch(new String[]{"pobi", "woni", "jun"});
+        List<Car> cars = Car.createBatch(new CarNames(new String[]{"pobi", "woni", "jun"}));
 
         assertThat(cars.get(0).getName()).isEqualTo("pobi");
         assertThat(cars.get(1).getName()).isEqualTo("woni");
         assertThat(cars.get(2).getName()).isEqualTo("jun");
-    }
-
-    @Test
-    @DisplayName("입력한 자동차 이름이 5자 초과할 경우 예외 발생")
-    void validateCarName() {
-        assertThatThrownBy(() -> Car.createBatch(new String[]{"invalidName", "pobi", "woni"}))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }
 
     @Test
