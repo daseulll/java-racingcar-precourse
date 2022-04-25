@@ -16,14 +16,8 @@ public class InputView {
         return new CarNames(carNameList);
     }
 
-    public static Integer scanNumOfRound() {
+    public static String scanNumOfRound() {
         System.out.println(INPUT_NUM_OF_ROUND);
-        String numOfRound = Console.readLine().trim();
-
-        try {
-            return Integer.parseInt(numOfRound);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-        }
+        return Console.readLine().trim();
     }
 }

@@ -12,8 +12,8 @@ public class Application {
         List<Car> cars = createCars();
         RacingCarGame racingCarGame = new RacingCarGame(cars, new RandomNumCondition(new RandomGenerator(0, 9)));
 
-        Integer numOfRound = scanNumOfRound();
-        for (int i = 0; i < numOfRound; i++) {
+        GameRound numOfRound = getNumOfRound();
+        for (int i = 0; i < numOfRound.getRound(); i++) {
             racingCarGame.play();
             ResultView.showResult(racingCarGame);
         }
@@ -30,12 +30,12 @@ public class Application {
         }
     }
 
-    private static Integer scanNumOfRound() {
+    private static GameRound getNumOfRound() {
         try {
-            return InputView.scanNumOfRound();
+            return new GameRound(InputView.scanNumOfRound());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return scanNumOfRound();
+            return getNumOfRound();
         }
     }
 }
