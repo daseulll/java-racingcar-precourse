@@ -28,7 +28,7 @@ public class Car {
     }
 
     public boolean isWinningLocation(int winningLocation) {
-        return location.getLocation() == winningLocation;
+        return location.isWinningLocation(winningLocation);
     }
 
     public static List<Car> createBatch(CarNames carNames) {

@@ -14,4 +14,8 @@ public class Location {
     public void move(int offset) {
         location += offset;
     }
+
+    public boolean isWinningLocation(int winningLocation) {
+        return location == winningLocation;
+    }
 }
