@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.common.RandomGenerator;
 import racingcar.vo.Location;
 
 import java.util.ArrayList;
@@ -53,8 +54,10 @@ class RacingCarGameTest {
                 new Car("pobi", new Location(1)),
                 new Car("woni", new Location(3)),
                 new Car("jun", new Location(3))));
+        RacingCarGame racingCarGame = new RacingCarGame(cars, new RandomNumCondition(new RandomGenerator(0, 9)));
 
-        List<Car> winners = RacingCarGame.findWinners(cars);
+        List<Car> winners = racingCarGame.findWinners();
+
         assertThat(winners).contains(cars.get(1));
         assertThat(winners).contains(cars.get(2));
     }

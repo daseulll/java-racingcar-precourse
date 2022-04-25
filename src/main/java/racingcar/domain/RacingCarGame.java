@@ -20,7 +20,7 @@ public class RacingCarGame {
         proceedCars();
     }
 
-    public static List<Car> findWinners(List<Car> cars) {
+    public List<Car> findWinners() {
         int winningLocation = getWinningLocation(cars);
 
         List<Car> winners = new ArrayList<>();

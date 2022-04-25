@@ -20,5 +20,6 @@ public class Application {
             racingCarGame.play();
             ResultView.showResult(racingCarGame);
         }
+        ResultView.showWinners(racingCarGame);
     }
 }
