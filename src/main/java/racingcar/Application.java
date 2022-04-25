@@ -11,8 +11,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = InputView.scanCarNames();
-        List<Car> cars = Car.createBatch(carNames);
+        List<Car> cars = createCars();
         RacingCarGame racingCarGame = new RacingCarGame(cars, new RandomNumCondition(new RandomGenerator(0, 9)));
 
         Integer numOfRound = InputView.scanNumOfRound();
@@ -21,5 +20,15 @@ public class Application {
             ResultView.showResult(racingCarGame);
         }
         ResultView.showWinners(racingCarGame);
+    }
+
+    private static List<Car> createCars() {
+        String[] carNames = InputView.scanCarNames();
+        try {
+            return Car.createBatch(carNames);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return createCars();
+        }
     }
 }
